@@ -1,0 +1,26 @@
+# PhishGuard backend — pinned dependencies.
+# Exact pins so the app builds identically on a clean machine.
+# Python 3.11+ required (tested on 3.13).
+
+# Web framework and server
+# Pinned to patched releases: starlette < 0.47 has known advisories
+# (PYSEC-2026-161 and others); fastapi 0.162 pulls a fixed starlette 1.x.
+fastapi==0.162.2
+starlette==1.10.0
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+pydantic-settings==2.7.1
+python-multipart==0.0.32
+
+# Database (SQLite via SQLAlchemy ORM — bound parameters, no raw SQL)
+SQLAlchemy==2.0.36
+
+# Model inference (XGBoost Booster loaded from JSON — no pickle)
+xgboost==3.4.1
+numpy==2.5.3
+
+# URL parsing for feature extraction
+tldextract==5.4.0
+
+# Security auditing (dev only; not imported by the app)
+pip-audit==2.9.0
