@@ -1,0 +1,37 @@
+{
+  "model_name": "XGBoost",
+  "feature_columns": [
+    "url_length",
+    "hostname_length",
+    "path_length",
+    "query_length",
+    "dot_count",
+    "hyphen_count",
+    "underscore_count",
+    "slash_count",
+    "at_count",
+    "question_count",
+    "equals_count",
+    "percent_count",
+    "digit_count",
+    "digit_ratio",
+    "special_character_ratio",
+    "subdomain_depth",
+    "query_parameter_count",
+    "has_ip_address",
+    "has_punycode",
+    "suspicious_word_count",
+    "suspicious_tld",
+    "uses_shortener",
+    "hosted_on_free_platform",
+    "brand_impersonation",
+    "hostname_entropy",
+    "url_entropy"
+  ],
+  "decision_threshold": 0.5,
+  "training_rows": 859127,
+  "training_sources": [
+    "kaggle_malicious_urls",
+    "phiusiil"
+  ]
+}
