@@ -1,0 +1,26 @@
+flowchart TB
+    subgraph Browser["User's browser"]
+        UI["React SPA (Vite)<br/>validation · result card · charts · history"]
+    end
+
+    subgraph Backend["FastAPI backend (uvicorn, single process)"]
+        direction TB
+        CORS["CORS<br/>(origin = front end only)"]
+        CTX["Request context<br/>request-id · logging · JSON 500 on crash"]
+        BODY["Body-size limit<br/>413 if over 64 KB"]
+        SEC["Security headers<br/>CSP · nosniff · frame DENY"]
+        ROUTE["Routes + Pydantic models<br/>/api/check · /batch · /history · /stats"]
+        GUARD["InferenceGuard<br/>thread pool + semaphore<br/>503 when full"]
+        NORM["Normalise<br/>NFKC · strip invisibles · confusables"]
+        FEAT["Feature extraction<br/>26 lexical features"]
+        MODEL["XGBoost Booster<br/>loaded once · SHA-256 checked"]
+        ORM["SQLAlchemy ORM<br/>bound parameters"]
+        DB[("SQLite<br/>session-scoped history")]
+    end
+
+    UI -->|"HTTPS JSON<br/>X-Session-ID"| CORS
+    CORS --> CTX --> BODY --> SEC --> ROUTE
+    ROUTE --> GUARD --> NORM --> FEAT --> MODEL
+    MODEL -->|"verdict + SHAP"| ROUTE
+    ROUTE --> ORM --> DB
+    ROUTE -->|"JSON response"| UI
