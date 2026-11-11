@@ -216,7 +216,7 @@ instead of queueing without limit, and any single job exceeding the timeout is
 abandoned with a `503`. Batch size is capped (50) and the body-size limit (64 KB)
 bounds a request before it is even parsed — defence in depth.
 
-**Measured result** (`python security/dos_attack.py`):
+**Measured result** (`python ../security/dos_attack.py`):
 
 | | Defence OFF | Defence ON |
 | --- | --- | --- |
@@ -245,7 +245,7 @@ The database treats the payload as a literal string to search for, so it matches
 nothing. A deliberately vulnerable f-string query is included **only** behind the
 `PG_INSECURE_SQL_DEMO` flag to prove the contrast.
 
-**Measured result** (`python security/sqli_attack.py`):
+**Measured result** (`python ../security/sqli_attack.py`):
 
 | Payload | Insecure build | Secure build (ORM) |
 | --- | --- | --- |
@@ -284,7 +284,7 @@ threshold. This is an adversarial-input attack on the model itself.
 maps known confusables back to their Latin equivalents. The model therefore
 scores the canonical address.
 
-**Measured result** (`python security/measure_evasion.py`) — the attacker picks
+**Measured result** (`python ../security/measure_evasion.py`) — the attacker picks
 homoglyphs from its own public look-alike table, independent of the server's map:
 
 ![Evasion result](security/evasion_result.png)
