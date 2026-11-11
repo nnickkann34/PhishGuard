@@ -392,6 +392,12 @@ cd frontend && npm audit
 
 ---
 
+## Generative AI Use
+
+Generative AI tools were used during development to assist with brainstorming, code review, debugging, and explanations of technical concepts. All of the recommended ideas generated suggestions were reviewed, discussed, tested, and modified by the team before being incorporated into the project. We were responsible for the final implementation, security decisions, testing, model integration, and understanding of the submitted work.
+
+---
+
 ## References
 
 Harvard (author–date) style.
